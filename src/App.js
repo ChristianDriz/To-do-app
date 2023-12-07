@@ -45,7 +45,7 @@ function App() {
                     search={search}
                 />
                 {To_Do.length === 0 && filteredList.length === 0 ? (
-                <div className="text-center text-textlight dark:text-textdark h-full flex items-center justify-center"> 
+                <div className="text-center text-textlight dark:text-textdark h-4/5 flex items-center justify-center"> 
                     <div>
                         <div className="flex items-center justify-center p-2">
                             <Icon icon='tabler:mood-empty' className="text-6xl"/>
