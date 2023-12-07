@@ -5,6 +5,7 @@ import Layout from './Components/Scripts/layout';
 import Form from './Components/form';
 import Crud from './Components/Scripts/crud';
 import { useState } from 'react'
+import { Icon } from "@iconify/react"
 
 function App() {
     const { layout, changeLayout, view } = Layout();
@@ -43,15 +44,25 @@ function App() {
                     changeLayout={changeLayout}
                     search={search}
                 />
-                {filteredList.length > 0 ? (
-                <List 
-                    view={view} 
-                    toggleModal={toggleModal}
-                    To_Do={filteredList}
-                    setToDotoEdit={setToDotoEdit}
-                />
-                ) : ( 
-                    <p className="py-10 text-textlight dark:text-textdark text-center">No results found for '{query}'</p>
+                {To_Do.length === 0 && filteredList.length === 0 ? (
+                <div className="text-center text-textlight dark:text-textdark h-full flex items-center justify-center"> 
+                    <div>
+                        <div className="flex items-center justify-center p-2">
+                            <Icon icon='tabler:mood-empty' className="text-6xl"/>
+                        </div>
+                        <p>To Do is empty</p>
+                    </div>
+                </div>
+                ) : ( filteredList.length > 0 ? (
+                        <List 
+                            view={view} 
+                            toggleModal={toggleModal}
+                            To_Do={filteredList}
+                            setToDotoEdit={setToDotoEdit}
+                        />
+                    ) : ( 
+                        <p className="py-10 text-textlight dark:text-textdark text-center">No results found for '{query}'</p>
+                    )
                 )}
                 <Form 
                     isOpen={isOpen} 
